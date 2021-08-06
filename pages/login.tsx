@@ -1,10 +1,6 @@
 import { Box, Button, Container, Flex, FormControl, FormLabel, Input, Link, Text } from '@chakra-ui/react';
 import NextLink from 'next/link';
 import { FC } from 'react';
-
-
-
-
 const login: FC = () => (
     <Flex height="100vh" background="gray.50" alignItems="center" justifyContent="center">
         <Container display="flex" maxW="container.md" flexDirection="column">
