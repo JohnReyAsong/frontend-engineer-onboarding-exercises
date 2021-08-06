@@ -1,17 +1,17 @@
-import { Box, Button, Flex, FormControl, FormLabel, Input, Text } from '@chakra-ui/react';
+import { Box, Button, Container, Flex, FormControl, FormLabel, Input, Text } from '@chakra-ui/react';
 import { FC } from 'react';
 
 
 
 const signup: FC = () => (
-    <Flex h="100vh" background="gray.50" alignItems="center" direction="column" justifyContent="center">
-        <>
+    <Flex h="100vh" background="gray.50" alignItems="center" direction="column" justifyContent="center" py={10}>
+        <Container maxW="container.md">
             {/* <NextImage src="/logo.png" width={200} height={200} /> */}
 
-            <Box background="white" p={6} rounded={5} mb={0.5} flexDirection="column" boxShadow="base" display="flex" width="600px" borderBottomRadius="none">
+            <Box background="white" p={6} rounded={5} mb={0.5} flexDirection="column" boxShadow="base" display="flex" borderBottomRadius="none">
                 <Text textAlign="center" fontSize="24px" fontWeight="bold">Sign Up</Text>
             </Box>
-            <Box background="white" p={6} rounded={5} flexDirection="column" boxShadow="base" display="flex" width="600px" borderTopRadius="none">
+            <Box background="white" p={6} rounded={5} flexDirection="column" boxShadow="base" display="flex" borderTopRadius="none">
                 <FormControl id="firstname" mb={4}>
                     <FormLabel fontSize="16px">First name</FormLabel>
                     <Input focusBorderColor="purple.500" type="text" placeholder="Enter first name" />
@@ -27,7 +27,7 @@ const signup: FC = () => (
                     <Input focusBorderColor="purple.500" type="email" placeholder="email@example.com" />
                 </FormControl>
 
-                <FormControl id="password">
+                <FormControl id="password" mb={4}>
                     <FormLabel fontSize="16px">Password</FormLabel>
                     <Input focusBorderColor="purple.500" type="password" placeholder="Enter password" />
                 </FormControl>
@@ -39,7 +39,7 @@ const signup: FC = () => (
 
                 <Button mt={8} colorScheme="purple">Log In</Button>
             </Box>
-        </>
+        </Container>
     </Flex>
 )
 

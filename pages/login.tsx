@@ -1,4 +1,4 @@
-import { Box, Button, Flex, FormControl, FormLabel, Input, Link, Text } from '@chakra-ui/react';
+import { Box, Button, Container, Flex, FormControl, FormLabel, Input, Link, Text } from '@chakra-ui/react';
 import NextLink from 'next/link';
 import { FC } from 'react';
 
@@ -6,14 +6,13 @@ import { FC } from 'react';
 
 
 const login: FC = () => (
-    <Flex h="100vh" background="gray.50" alignItems="center" direction="column" justifyContent="center">
-        <>
-            {/* <NextImage src="/logo.png" width={200} height={200} /> */}
+    <Flex height="100vh" background="gray.50" alignItems="center" justifyContent="center">
+        <Container display="flex" maxW="container.md" flexDirection="column">
 
-            <Box background="white" p={6} rounded={5} mb={0.5} flexDirection="column" boxShadow="base" display="flex" width="600px" borderBottomRadius="none">
+            <Box background="white" p={6} rounded={5} mb={0.5} flexDirection="column" boxShadow="base" display="flex" borderBottomRadius="none">
                 <Text textAlign="center" fontSize="24px" fontWeight="bold">Log In</Text>
             </Box>
-            <Box background="white" p={6} rounded={5} flexDirection="column" boxShadow="base" display="flex" width="600px" borderTopRadius="none">
+            <Box background="white" p={6} rounded={5} flexDirection="column" boxShadow="base" display="flex" borderTopRadius="none">
                 <FormControl id="email" mb={4}>
                     <FormLabel fontSize="16px">Email</FormLabel>
                     <Input focusBorderColor="purple.500" type="email" placeholder="email@example.com" />
@@ -33,7 +32,7 @@ const login: FC = () => (
 
                 <Button mt={8} colorScheme="purple">Log In</Button>
             </Box>
-        </>
+        </Container>
     </Flex>
 );
 

@@ -1,4 +1,4 @@
-import { Box, Breadcrumb, BreadcrumbItem, BreadcrumbLink, Button, Flex, FormControl, FormLabel, Grid, GridItem, Input, Spacer, Textarea } from '@chakra-ui/react';
+import { Box, Breadcrumb, BreadcrumbItem, BreadcrumbLink, Button, Container, FormControl, FormLabel, Grid, GridItem, Input, Spacer, Textarea } from '@chakra-ui/react';
 import NextLink from 'next/link';
 import { FC } from 'react';
 import { FaChevronRight } from 'react-icons/fa';
@@ -7,30 +7,36 @@ import { FaChevronRight } from 'react-icons/fa';
 
 
 const Add: FC = () => (
-    <Flex height="100vh" background="gray.50" direction="column" pt={40} px={80}>
+    <Container maxW="container.xl" py={{ base: 20, lg: 40 }}>
         <Breadcrumb spacing="8px" color="gray.400" separator={<FaChevronRight />} >
             <BreadcrumbItem>
-                <BreadcrumbLink href="/product/list">Products</BreadcrumbLink>
+                <NextLink href="/product/list">
+                    <BreadcrumbLink >Products</BreadcrumbLink>
+
+                </NextLink>
             </BreadcrumbItem>
 
             <BreadcrumbItem>
-                <BreadcrumbLink href="/product/add">Add product</BreadcrumbLink>
+                <NextLink href="/product/add">
+                    <BreadcrumbLink >Add product</BreadcrumbLink>
+                </NextLink>
             </BreadcrumbItem>
         </Breadcrumb>
 
         <Grid
-            mt={8}
-            templateRows="70px auto"
-            templateColumns="490px auto"
-            gap={6}
-            background="white"
-            py={10}
-            px={8}
             boxShadow="base"
             borderRadius="lg"
+            // mt={8}
+            templateRows={{ lg: "70px auto", base: "" }}
+            templateColumns={{ lg: "490px auto", base: "" }}
+            gap={6}
+            background="white"
+            p={5}
+
+
 
         >
-            <GridItem overflow="hidden" colSpan={1} rowSpan={2}>
+            <GridItem colSpan={1} rowSpan={2}>
                 <FormControl id="photo" mb={4}>
                     <FormLabel fontSize="16px">Photo</FormLabel>
                     <Box borderWidth="3px" height="260px" borderStyle="dashed"
@@ -39,7 +45,7 @@ const Add: FC = () => (
                 </FormControl>
             </GridItem>
 
-            <GridItem display="flex" colSpan={1}>
+            <GridItem colSpan={1}>
                 <FormControl id="title" mb={4}>
                     <FormLabel fontSize="16px">Title</FormLabel>
                     <Input focusBorderColor="purple.500" type="text" placeholder="Enter Title" />
@@ -64,7 +70,7 @@ const Add: FC = () => (
 
 
 
-    </Flex>
+    </Container>
 );
 
 export default Add;

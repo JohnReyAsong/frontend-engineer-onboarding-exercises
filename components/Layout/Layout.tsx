@@ -4,10 +4,10 @@ import Footer from './Footer'
 import Navbar from './Navbar'
 
 const Layout: FC = ({ children }) => (
-  <Flex direction="column" background="red">
+  <Flex direction="column" background="gray.50">
     <Navbar />
     {children}
-    <Box pos="absolute" bottom="0" width="100%">
+    <Box width="100%">
       <Footer />
     </Box>
   </Flex>

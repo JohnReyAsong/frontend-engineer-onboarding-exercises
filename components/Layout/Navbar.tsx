@@ -1,36 +1,55 @@
-import { Box, Button, Flex, Spacer, Text } from '@chakra-ui/react';
+import { Box, Button, Container, Spacer, Text, useMediaQuery } from '@chakra-ui/react';
 import NextImage from 'next/image';
 import NextLink from 'next/link';
+import { useRouter } from 'next/router';
 import { FC } from 'react';
+import { GiHamburgerMenu } from 'react-icons/gi';
+
+const Navbar: FC = () => {
+    const route = useRouter()
+    const [hasSmallerScreen] = useMediaQuery("(max-width: 480px)");
+    const isProductListPath = route.asPath === "/product/list"
 
 
-const Navbar: FC = () => (
-    <Flex alignItems="center" px={80} zIndex={2} boxShadow="base" background="white" pos="fixed" width="100%">
-        <NextImage src="/workflow.png" width={40} height={40} />
+    return (
+        <Box zIndex={2} pos="fixed" width="100%" boxShadow="base" background="white">
+            <Container display="flex" maxW="container.xl" height="64px" alignItems="center">
 
-        <Text fontSize="22px" ml={3} mr={5} fontWeight="bold">
-            workflow
-        </Text>
-        <Box borderBottomWidth="3px" borderBottomColor="#5146E6" py={5}>
-            <Text fontSize="16px" textAlign="center" >
-                Products
-            </Text>
+                <NextImage src="/workflow.png" width={40} height={40} />
+
+                <Text fontSize="22px" ml={3} mr={5} fontWeight="bold">
+                    workflow
+                </Text>
+                <NextLink href="/product/list">
+                    <Box borderBottomWidth={isProductListPath ? "3px" : ""} borderBottomColor={isProductListPath ? "#5146E6" : ""} paddingTop="20px" paddingBottom="20px" cursor="default" _hover={{ borderBottomColor: "#5146E6", borderBottomWidth: "3px" }}>
+                        <Text fontSize="16px" textAlign="center" >
+                            Products
+                        </Text>
+                    </Box>
+                </NextLink>
+
+                <Spacer />
+                <Box display={{ base: "none", sm: "flex" }}
+                >
+                    <NextLink href="/login">
+                        <Button mr="4" variant="outline">
+                            Log In
+                        </Button>
+                    </NextLink>
+
+                    <NextLink href="/signup">
+                        <Button colorScheme="purple">Sign Up</Button>
+
+                    </NextLink>
+                </Box>
+
+                <Box display={{ base: "flex", sm: "none" }}>
+                    <GiHamburgerMenu size="35" color="#1A202C" />
+                </Box>
+            </Container>
+
         </Box>
-
-        <Spacer />
-        <Box>
-            <NextLink href="/login">
-                <Button mr="4" variant="outline">
-                    Log In
-                </Button>
-            </NextLink>
-
-            <NextLink href="/signup">
-                <Button colorScheme="purple">Sign Up</Button>
-
-            </NextLink>
-        </Box>
-    </Flex>
-)
+    )
+}
 
 export default Navbar

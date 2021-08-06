@@ -5,11 +5,13 @@ import { FC } from 'react';
 
 const App: FC<AppProps> = ({ Component, pageProps }) => (
   <ChakraProvider>
-    <Box background="gray.50" >
-      <Layout>
+
+    <Layout>
+      <Box background="gray.50" >
         <Component {...pageProps} />
-      </Layout>
-    </Box>
+      </Box>
+
+    </Layout>
   </ChakraProvider>
 );
 

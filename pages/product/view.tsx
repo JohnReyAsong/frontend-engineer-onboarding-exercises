@@ -1,5 +1,5 @@
 import {
-    Box, Breadcrumb, BreadcrumbItem, BreadcrumbLink, Button, Flex, Grid, GridItem, Heading, IconButton, Image, Modal, ModalBody,
+    Box, Breadcrumb, BreadcrumbItem, BreadcrumbLink, Button, Container, Grid, GridItem, Heading, IconButton, Image, Modal, ModalBody,
     ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay, Spacer, Text, useDisclosure
 } from '@chakra-ui/react';
 import NextLink from 'next/link';
@@ -8,35 +8,41 @@ import { FaChevronRight, FaEdit } from 'react-icons/fa';
 import { HiTrash } from 'react-icons/hi';
 import { MdShoppingCart } from 'react-icons/md';
 
-
-
-
 const View: FC = () => {
     const { isOpen, onOpen, onClose } = useDisclosure()
 
     return (
-        <Flex height="100vh" background="gray.50" direction="column" pt={40} px={80}>
+        <Container maxW="container.xl" py={{ base: 30, lg: 40 }}>
             <Breadcrumb spacing="8px" color="gray.400" separator={<FaChevronRight />} >
                 <BreadcrumbItem>
-                    <BreadcrumbLink href="/product/list">Products</BreadcrumbLink>
+                    <NextLink href="/product/list">
+                        <BreadcrumbLink >Products</BreadcrumbLink>
+
+                    </NextLink>
                 </BreadcrumbItem>
 
                 <BreadcrumbItem>
-                    <BreadcrumbLink href="/product/view">ReactJS</BreadcrumbLink>
+                    <NextLink href="/product/view">
+                        <BreadcrumbLink >ReactJS</BreadcrumbLink>
+                    </NextLink>
                 </BreadcrumbItem>
             </Breadcrumb>
 
             <Grid
-                mt={8}
-                templateRows="20px auto"
-                templateColumns="490px auto"
+                my={8}
+                templateRows={{ lg: "20px auto", base: "auto" }}
+                templateColumns={{ lg: "490px auto", base: "" }}
                 gap={6}
+                background="white"
+                p={5}
+                boxShadow="base"
+                borderRadius="lg"
 
 
             >
-                <GridItem overflow="hidden" colSpan={1} rowSpan={2}>
+                <GridItem overflow="hidden" colSpan={1} rowSpan={2} p={1}>
                     <Image src="/product.png" borderRadius="lg" />
-                    <Button _hover={{ bg: "purple.100" }} leftIcon={<MdShoppingCart />} color="purple.600" width="100%" fontWeight="bold" background="purple.50" mt={6}>
+                    <Button _hover={{ bg: "purple.100" }} leftIcon={<MdShoppingCart />} color="purple.600" width="100%" fontWeight="bold" background="purple.50" my={4} >
                         Add to cart
                     </Button>
                 </GridItem>
@@ -86,9 +92,8 @@ const View: FC = () => {
             </Modal>
 
 
+        </Container>
 
-
-        </Flex>
     )
 };
 
