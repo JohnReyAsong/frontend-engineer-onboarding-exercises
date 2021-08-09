@@ -1,1 +1,2 @@
-export { default } from './ModuleComponent'
+export { default } from './ModuleComponent';
+

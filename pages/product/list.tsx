@@ -1,49 +1,6 @@
-import { Box, Button, Container, Divider, Flex, Heading, Spacer, Wrap } from '@chakra-ui/react';
-import ProductCard from '@components/ProductCard';
-import NextLink from 'next/link';
+import ProductListComponent from '@modules/ProductComponent/ProductListComponent';
 import { FC } from 'react';
-import { BsPlus } from 'react-icons/bs';
 
+const ProductListModule: FC = () => <ProductListComponent />;
 
-
-
-const View: FC = () => (
-    <Container maxW="container.xl" alignItems="center" background="gray.50" paddingTop="97px" paddingBottom="97px">
-        <Flex display="flex">
-            <Box>
-                <Heading size="lg">Products</Heading>
-            </Box>
-            <Spacer />
-            <Box>
-                <NextLink href="/product/add">
-                    <Button leftIcon={<BsPlus size="20" />} colorScheme="purple" fontWeight="bold">
-                        Add Product
-                    </Button>
-                </NextLink>
-            </Box>
-
-        </Flex>
-
-        <Divider mb={8} mt={3} />
-
-        <Wrap spacing="29px" justify="center" >
-            <ProductCard />
-            <ProductCard />
-            <ProductCard />
-            <ProductCard />
-            <ProductCard />
-            <ProductCard />
-            <ProductCard />
-            <ProductCard />
-            <ProductCard />
-            <ProductCard />
-            <ProductCard />
-            <ProductCard />
-        </Wrap>
-
-        <Divider mt={8} />
-    </Container>
-
-);
-
-export default View;
+export default ProductListModule;
