@@ -9,7 +9,7 @@ import { MdShoppingCart } from 'react-icons/md';
 
 
 const ProductCard: FC = () => (
-    <Box width="290px" height="424px" boxShadow="base" borderRadius="lg" overflow="hidden" background="white" cursor="grab" _hover={{ boxShadow: "xl" }}>
+    <Box width="290px" height="424px" boxShadow="base" borderRadius="lg" overflow="hidden" background="white" cursor="pointer" _hover={{ boxShadow: "xl" }}>
         <Box zIndex={1} pos="absolute" padding={5} display="flex" >
             <Box pos="relative" left="220px">
                 <Menu>

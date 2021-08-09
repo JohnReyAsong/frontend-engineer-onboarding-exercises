@@ -1,6 +1,7 @@
-import { Box, Breadcrumb, BreadcrumbItem, BreadcrumbLink, Button, Container, FormControl, FormLabel, Input, Spacer, Stack, Textarea } from '@chakra-ui/react';
+import { Box, Breadcrumb, BreadcrumbItem, BreadcrumbLink, Button, Container, FormControl, FormLabel, Input, Spacer, Stack, Text, Textarea } from '@chakra-ui/react';
 import NextLink from 'next/link';
 import { FC } from 'react';
+import { BsImage } from 'react-icons/bs';
 import { FaChevronRight } from 'react-icons/fa';
 
 
@@ -35,10 +36,15 @@ const AddProductComponent: FC = () => (
       <Box >
         <FormControl id="photo" mb={4}>
           <FormLabel fontSize="16px">Photo</FormLabel>
-          <Box borderWidth="3px" height="260px" width={{ base: "auto", lg: "450px" }} borderStyle="dashed"
+          <Box borderWidth="3px" cursor="move" display="flex" flexDirection="column" alignItems="center" justifyContent="center" height="260px" width={{ base: "auto", lg: "440px" }} borderStyle="dashed"
             borderRadius="lg"
           >
-            <input type="file" />
+            <BsImage size="30px" color="#9CA3AF" />
+            <Input type="file" opacity={0} height="100%" pos="absolute" />
+            <Box display="flex" mt={3}>
+              <Text color="purple.400" fontWeight="bold">Upload a file &nbsp;</Text> <Text>or drag and drop</Text>
+            </Box>
+            <Text color="gray" fontSize="14px">PNG, JPG, GIF up to 10mb</Text>
           </Box>
         </FormControl>
       </Box>
