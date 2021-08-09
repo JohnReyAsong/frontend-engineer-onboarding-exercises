@@ -1,6 +1,6 @@
 import {
-    Box, Breadcrumb, BreadcrumbItem, BreadcrumbLink, Button, Container, Grid, GridItem, Heading, IconButton, Image, Modal, ModalBody,
-    ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay, Spacer, Text, useDisclosure
+    Box, Breadcrumb, BreadcrumbItem, BreadcrumbLink, Button, Container, Heading, IconButton, Image, Modal, ModalBody,
+    ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay, Spacer, Stack, Text, useDisclosure
 } from '@chakra-ui/react';
 import NextLink from 'next/link';
 import { FC } from 'react';
@@ -12,7 +12,7 @@ const View: FC = () => {
     const { isOpen, onOpen, onClose } = useDisclosure()
 
     return (
-        <Container maxW="container.xl" py={{ base: 30, lg: 40 }}>
+        <Container maxW="container.xl" py={{ base: 20, lg: 40 }} height={{ base: "", sm: "", md: "", lg: "100vh" }} >
             <Breadcrumb spacing="8px" color="gray.400" separator={<FaChevronRight />} >
                 <BreadcrumbItem>
                     <NextLink href="/product/list">
@@ -28,38 +28,33 @@ const View: FC = () => {
                 </BreadcrumbItem>
             </Breadcrumb>
 
-            <Grid
-                my={8}
-                templateRows={{ lg: "20px auto", base: "auto" }}
-                templateColumns={{ lg: "490px auto", base: "" }}
-                gap={6}
-                background="white"
-                p={5}
+            <Stack
                 boxShadow="base"
+                direction={{ base: "column", lg: "row" }}
                 borderRadius="lg"
-
+                mt={8}
+                background="white"
+                spacing={10}
+                p={5}
 
             >
-                <GridItem overflow="hidden" colSpan={1} rowSpan={2} p={1}>
+                <Box>
                     <Image src="/product.png" borderRadius="lg" />
                     <Button _hover={{ bg: "purple.100" }} leftIcon={<MdShoppingCart />} color="purple.600" width="100%" fontWeight="bold" background="purple.50" my={4} >
                         Add to cart
                     </Button>
-                </GridItem>
+                </Box>
 
-                <GridItem display="flex" colSpan={1}>
-                    <Box>
+                <Box w="100%">
+                    <Box display="flex">
+
                         <Heading size="lg">ReactJS</Heading>
-                    </Box>
-                    <Spacer />
-                    <Box>
+                        <Spacer />
                         <NextLink href="/product/edit" >
                             <IconButton aria-label="Edit product" icon={<FaEdit />} />
                         </NextLink>
                         <IconButton aria-label="Delete product" ml={4} icon={<HiTrash />} onClick={onOpen} />
                     </Box>
-                </GridItem>
-                <GridItem colSpan={1} borderWidth="3">
                     <Text my={4}>
                         Repundiandae sint consequuntur vel. Amet ut nobis explicabo numquam expedita quia omnis voluptatem. Minus quidem ipsam quia iusto.
                         Repundiandae sint consequuntur vel. Amet ut nobis explicabo numquam expedita quia omnis voluptatem. Minus quidem ipsam quia iusto.
@@ -68,8 +63,9 @@ const View: FC = () => {
                         Repundiandae sint consequuntur vel. Amet ut nobis explicabo numquam expedita quia omnis voluptatem. Minus quidem ipsam quia iusto.
 
                     </Text>
-                </GridItem>
-            </Grid>
+                </Box>
+
+            </Stack>
 
             {/* Modal */}
 

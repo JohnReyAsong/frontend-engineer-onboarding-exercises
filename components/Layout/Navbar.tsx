@@ -1,4 +1,4 @@
-import { Box, Button, Container, Spacer, Text, useMediaQuery } from '@chakra-ui/react';
+import { Box, Button, Container, Spacer, Text } from '@chakra-ui/react';
 import NextImage from 'next/image';
 import NextLink from 'next/link';
 import { useRouter } from 'next/router';
@@ -7,7 +7,6 @@ import { GiHamburgerMenu } from 'react-icons/gi';
 
 const Navbar: FC = () => {
     const route = useRouter()
-    const [hasSmallerScreen] = useMediaQuery("(max-width: 480px)");
     const isProductListPath = route.asPath === "/product/list"
 
 
@@ -32,7 +31,7 @@ const Navbar: FC = () => {
                 <Box display={{ base: "none", sm: "flex" }}
                 >
                     <NextLink href="/login">
-                        <Button mr="4" variant="outline">
+                        <Button mr="4" variant="outline" >
                             Log In
                         </Button>
                     </NextLink>

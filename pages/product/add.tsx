@@ -1,4 +1,4 @@
-import { Box, Breadcrumb, BreadcrumbItem, BreadcrumbLink, Button, Container, FormControl, FormLabel, Grid, GridItem, Input, Spacer, Textarea } from '@chakra-ui/react';
+import { Box, Breadcrumb, BreadcrumbItem, BreadcrumbLink, Button, Container, FormControl, FormLabel, Input, Spacer, Stack, Textarea } from '@chakra-ui/react';
 import NextLink from 'next/link';
 import { FC } from 'react';
 import { FaChevronRight } from 'react-icons/fa';
@@ -7,7 +7,7 @@ import { FaChevronRight } from 'react-icons/fa';
 
 
 const Add: FC = () => (
-    <Container maxW="container.xl" py={{ base: 20, lg: 40 }}>
+    <Container maxW="container.xl" height="100vh" py={{ base: 20, lg: 40 }} mb={5}>
         <Breadcrumb spacing="8px" color="gray.400" separator={<FaChevronRight />} >
             <BreadcrumbItem>
                 <NextLink href="/product/list">
@@ -23,36 +23,30 @@ const Add: FC = () => (
             </BreadcrumbItem>
         </Breadcrumb>
 
-        <Grid
+        <Stack
             boxShadow="base"
+            direction={{ base: "column", lg: "row" }}
             borderRadius="lg"
-            // mt={8}
-            templateRows={{ lg: "70px auto", base: "" }}
-            templateColumns={{ lg: "490px auto", base: "" }}
-            gap={6}
+            mt={8}
             background="white"
+            spacing={10}
             p={5}
 
-
-
         >
-            <GridItem colSpan={1} rowSpan={2}>
+            <Box >
                 <FormControl id="photo" mb={4}>
                     <FormLabel fontSize="16px">Photo</FormLabel>
-                    <Box borderWidth="3px" height="260px" borderStyle="dashed"
+                    <Box borderWidth="3px" height="260px" width={{ base: "auto", lg: "450px" }} borderStyle="dashed"
                         borderRadius="lg"
                     />
                 </FormControl>
-            </GridItem>
-
-            <GridItem colSpan={1}>
+            </Box>
+            <Box w="100%">
                 <FormControl id="title" mb={4}>
                     <FormLabel fontSize="16px">Title</FormLabel>
                     <Input focusBorderColor="purple.500" type="text" placeholder="Enter Title" />
                 </FormControl>
 
-            </GridItem>
-            <GridItem colSpan={1} borderWidth="3">
                 <FormControl id="description" mb={4}>
                     <FormLabel fontSize="16px">Description</FormLabel>
                     <Textarea focusBorderColor="purple.500" type="text" placeholder="Enter Description" />
@@ -65,8 +59,8 @@ const Add: FC = () => (
                     </NextLink >
                     <Button mt={8} colorScheme="purple" px={16} fontWeight="bold">Submit</Button>
                 </Box>
-            </GridItem>
-        </Grid>
+            </Box>
+        </Stack>
 
 
 
