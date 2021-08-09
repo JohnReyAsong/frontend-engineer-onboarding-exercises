@@ -8,7 +8,7 @@ import { BsPlus } from 'react-icons/bs';
 
 
 const ProductListComponent: FC = () => (
-  <Container maxW="container.xl" alignItems="center" background="gray.50" paddingTop="97px" paddingBottom="97px">
+  <Container maxW="container.xl" alignItems="center" background="gray.50" py={{ base: 20, lg: 40 }}>
     <Flex display="flex">
       <Box>
         <Heading size="lg">Products</Heading>

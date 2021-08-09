@@ -1,6 +1,6 @@
 import {
     Box, Button, Heading, IconButton, Image, Menu,
-    MenuButton, MenuItem, MenuList, Text
+    MenuButton, MenuItem, MenuList, Spacer, Text
 } from '@chakra-ui/react';
 import NextLink from 'next/link';
 import { FC } from 'react';
@@ -10,15 +10,16 @@ import { MdShoppingCart } from 'react-icons/md';
 
 const ProductCard: FC = () => (
     <Box width="290px" height="424px" boxShadow="base" borderRadius="lg" overflow="hidden" background="white" cursor="pointer" _hover={{ boxShadow: "xl" }}>
-        <Box zIndex={1} pos="absolute" padding={5} display="flex" >
-            <Box pos="relative" left="220px">
+        <Box zIndex={1} pos="absolute" padding={5} display="flex" width="290px" justifyContent="end" >
+            <Spacer />
+            <Box >
                 <Menu>
                     <MenuButton
                         as={IconButton}
                         size="sm"
-                        aria-label="Options"
                         icon={<GoKebabVertical size="20px" />}
                         borderRadius="50%"
+
 
 
                     />
