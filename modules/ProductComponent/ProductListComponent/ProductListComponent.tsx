@@ -1,19 +1,18 @@
-import { useQuery } from "@apollo/client";
+import { useQuery } from '@apollo/client';
 import { Box, Button, Container, Divider, Flex, Heading, Spacer, Wrap } from '@chakra-ui/react';
-import ProductCard from "@components/ProductCard";
+import ProductCard from '@components/ProductCard';
+import SkeletonCard from '@components/SkeletonCard';
 import NextLink from 'next/link';
-import { FC } from "react";
+import { FC } from 'react';
 import { BsPlus } from 'react-icons/bs';
-import { FETCH_PRODUCTS_QUERY } from "../../../lib/queries/query";
-
+import { FETCH_PRODUCTS_QUERY } from '../../../lib/queries/query';
 
 const ProductListComponent: FC = () => {
-
-  const { loading, error, data } = useQuery(FETCH_PRODUCTS_QUERY);
-  // const [productList] = useState(data.products.edges)
-  console.log('hihi', data)
-
-
+  const { loading, data } = useQuery(FETCH_PRODUCTS_QUERY);
+  let skeletonLoading;
+  if (loading) {
+    skeletonLoading = Array.from({ length: 16 }).map((x, index) => <SkeletonCard key={index} />);
+  }
 
   return (
     <Container maxW="container.xl" alignItems="center" background="gray.50" py={{ base: 20, lg: 40 }}>
@@ -29,14 +28,15 @@ const ProductListComponent: FC = () => {
             </Button>
           </NextLink>
         </Box>
-
       </Flex>
 
       <Divider mb={8} mt={3} />
 
-      <Wrap spacing="29px" justify="center" >
+      <Wrap spacing="29px" justify="center">
+        {skeletonLoading}
         {data?.products.edges.map((product) => (
-          <ProductCard key={product.node.id}
+          <ProductCard
+            key={product.node.id}
             id={product.node.id}
             name={product.node.name}
             description={product.node.description}
@@ -46,8 +46,7 @@ const ProductListComponent: FC = () => {
 
       <Divider mt={8} />
     </Container>
-
-  )
+  );
 };
 
 export default ProductListComponent;
