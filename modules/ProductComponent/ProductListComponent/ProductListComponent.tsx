@@ -6,12 +6,12 @@ import NextLink from 'next/link';
 import { FC } from 'react';
 import { BsPlus } from 'react-icons/bs';
 import { useSelector } from 'react-redux';
-import { FETCH_PRODUCTS_QUERY } from '../../../lib/queries/query';
+import { PRODUCT_LIST } from '../../../lib/queries/query';
 import { RootState } from '../../../store/store';
 
 const ProductListComponent: FC = () => {
   const isLoggedin = useSelector((state: RootState) => state.userAuthenticationReducer.isLoggedIn);
-  const { loading, data } = useQuery(FETCH_PRODUCTS_QUERY);
+  const { loading, data } = useQuery(PRODUCT_LIST);
   let skeletonLoading;
   if (loading) {
     skeletonLoading = Array.from({ length: 16 }).map((x, index) => <SkeletonCard key={index} />);
