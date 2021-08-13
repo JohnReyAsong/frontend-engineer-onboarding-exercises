@@ -33,7 +33,7 @@ const LoginComponent: FC = () => {
 
       setTimeout(() => {
         void router.push('/product/list');
-      }, 1);
+      });
     },
     onError: (e) => {
       toast({

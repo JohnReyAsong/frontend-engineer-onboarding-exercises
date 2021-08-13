@@ -5,9 +5,12 @@ import SkeletonCard from '@components/SkeletonCard';
 import NextLink from 'next/link';
 import { FC } from 'react';
 import { BsPlus } from 'react-icons/bs';
+import { useSelector } from 'react-redux';
 import { FETCH_PRODUCTS_QUERY } from '../../../lib/queries/query';
+import { RootState } from '../../../store/store';
 
 const ProductListComponent: FC = () => {
+  const isLoggedin = useSelector((state: RootState) => state.userAuthenticationReducer.isLoggedIn);
   const { loading, data } = useQuery(FETCH_PRODUCTS_QUERY);
   let skeletonLoading;
   if (loading) {
@@ -21,13 +24,17 @@ const ProductListComponent: FC = () => {
           <Heading size="lg">Products</Heading>
         </Box>
         <Spacer />
-        <Box>
-          <NextLink href="/product/add">
-            <Button leftIcon={<BsPlus size="20" />} colorScheme="purple" fontWeight="bold">
-              Add Product
-            </Button>
-          </NextLink>
-        </Box>
+        {isLoggedin ? (
+          <Box>
+            <NextLink href="/product/add">
+              <Button leftIcon={<BsPlus size="20" />} colorScheme="purple" fontWeight="bold">
+                Add Product
+              </Button>
+            </NextLink>
+          </Box>
+        ) : (
+          ''
+        )}
       </Flex>
 
       <Divider mb={8} mt={3} />

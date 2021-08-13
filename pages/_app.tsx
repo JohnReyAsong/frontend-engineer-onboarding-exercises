@@ -1,6 +1,7 @@
 import { ApolloClient, ApolloProvider, createHttpLink, InMemoryCache } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
 import { ChakraProvider } from '@chakra-ui/react';
+import AuthCheck from '@components/AuthCheck';
 import Layout from '@components/Layout';
 import { AppProps } from 'next/app';
 import { FC } from 'react';
@@ -29,16 +30,17 @@ const client = new ApolloClient({
 });
 
 const App: FC<AppProps> = ({ Component, pageProps }) => (
-  <ApolloProvider client={client}>
-    <ChakraProvider>
-      <Layout>
-        <Provider store={store}>
-          <Component {...pageProps} />
-        </Provider>
-        ,
-      </Layout>
-    </ChakraProvider>
-  </ApolloProvider>
+  <ChakraProvider>
+    <Provider store={store}>
+      <ApolloProvider client={client}>
+        <AuthCheck>
+          <Layout>
+            <Component {...pageProps} />
+          </Layout>
+        </AuthCheck>
+      </ApolloProvider>
+    </Provider>
+  </ChakraProvider>
 );
 
 export default App;
