@@ -1,23 +1,30 @@
-import { gql } from "@apollo/client";
+import { gql } from '@apollo/client';
 
-export const FETCH_PRODUCTS_QUERY = gql`
-  {
-    queryArtists(byName: "Ed Sheeran") {
-      name
+export const LOGIN = gql`
+  mutation authenticate($input: AuthenticateInput!) {
+    authenticate(input: $input) {
+      token
+    }
+  }
+`;
+
+export const SIGN_UP = gql`
+  mutation signUp($input: SignUpInput!) {
+    signUp(input: $input) {
+      token
+    }
+  }
+`;
+
+export const ADD_PRODUCT = gql`
+  mutation createProduct($input: CreateProductInput!) {
+    createProduct(input: $input) {
       id
-      image
-      albums {
-        name
-        id
-        image
-        tracks {
-          id
-          name
-          preview_url
-          artists {
-            name
-          }
-        }
+      name
+      description
+      owner {
+        firstname
+        lastname
       }
     }
   }
