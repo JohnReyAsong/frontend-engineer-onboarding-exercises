@@ -46,7 +46,10 @@ const ProductCard: FC<ProductDetails> = ({ id, name, description }) => {
             <Menu>
               <MenuButton as={IconButton} size="sm" icon={<GoKebabVertical size="20px" />} borderRadius="50%" />
               <MenuList>
-                <MenuItem>Edit</MenuItem>
+                <NextLink href={`/product/edit/${id}`}>
+                  <MenuItem>Edit</MenuItem>
+                </NextLink>
+
                 <MenuItem>Delete</MenuItem>
               </MenuList>
             </Menu>

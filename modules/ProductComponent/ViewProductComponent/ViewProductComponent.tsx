@@ -47,7 +47,7 @@ const ViewProductComponent: FC = () => {
   const productDetails = data?.products?.edges[0].node;
 
   return (
-    <Container maxW="container.xl" py={{ base: 20, lg: 40 }} height="100vh">
+    <Container maxW="container.xl" py={{ base: 20, lg: 40 }}>
       <Breadcrumb spacing="8px" color="gray.400" separator={<FaChevronRight />}>
         <BreadcrumbItem>
           <NextLink href="/product/list">
@@ -90,7 +90,7 @@ const ViewProductComponent: FC = () => {
           <Box display="flex">
             <Heading size="lg">{productDetails?.name}</Heading>
             <Spacer />
-            <NextLink href="/product/edit">
+            <NextLink href={`/product/edit/${productDetails?.id}`}>
               <IconButton aria-label="Edit product" icon={<FaEdit />} />
             </NextLink>
             <IconButton aria-label="Delete product" ml={4} icon={<HiTrash />} onClick={onOpen} />

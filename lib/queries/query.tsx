@@ -28,6 +28,9 @@ export const PRODUCT_DETAILS = gql`
           id
           name
           description
+          owner {
+            id
+          }
         }
       }
     }

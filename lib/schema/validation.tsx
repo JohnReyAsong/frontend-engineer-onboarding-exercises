@@ -17,3 +17,8 @@ export const AddProduct = yup.object().shape({
   name: yup.string().required('Product name is required'),
   description: yup.string().required('Product description is required'),
 });
+
+export const EditProduct = yup.object().shape({
+  name: yup.string().required('Product name is required'),
+  description: yup.string().required('Product description is required'),
+});

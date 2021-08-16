@@ -29,3 +29,19 @@ export const ADD_PRODUCT = gql`
     }
   }
 `;
+
+export const EDIT_PRODUCT = gql`
+  mutation ($input: UpdateProductInput!) {
+    updateProduct(input: $input) {
+      id
+      name
+      description
+      owner {
+        id
+        firstname
+        lastname
+        emailAddress
+      }
+    }
+  }
+`;
